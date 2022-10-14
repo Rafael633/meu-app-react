@@ -17,7 +17,7 @@ const FetchNews = () => {
   }, []);
 
   return (
-    <div style={{maxWidth:"70rem", margin:"0 auto"}}>
+    <div style={{ maxWidth: "70rem", margin: "0 auto" }}>
       <h1>Notícias</h1>
       {isLoading ? (
         <CircularProgress />
@@ -29,10 +29,11 @@ const FetchNews = () => {
               marginBottom: "1rem",
               textAlign: "left",
               padding: "1rem",
-              borderRadius: "2rem"
+              borderRadius: "2rem",
             }}
+            key={noticia.id}
           >
-            <div key={noticia.id}>
+            <div>
               <h2>{noticia.title}</h2>
               <div>{noticia.body}</div>
             </div>
