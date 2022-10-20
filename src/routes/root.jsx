@@ -1,32 +1,27 @@
-import { Outlet } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
+import Contador from "../components/Contator";
+import ErrorPage from "../components/ErrorPage";
+import FetchNews from "../components/FetchNews";
+import { PageLayout } from "../components/PageLayout";
+
+const route = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<PageLayout />} errorElement={<ErrorPage />}>
+      <Route index path="sobre" element={<Contador />} />
+      <Route path="noticias" element={<FetchNews />} />
+      <Route path="contato" element={<Contador />} />
+    </Route>
+  )
+);
 
 const Root = () => {
-  return (
-    <>
-      <div id="sidebar">
-        <h1>Menu</h1>
-        <nav>
-          <ul>
-            <li>
-              <a href={"/"}>Inicial</a>
-            </li>
-            <li>
-              <a href={"/sobre/"}>Sobre</a>
-            </li>
-            <li>
-              <a href={`/noticias/`}>Noticias</a>
-            </li>
-            <li>
-              <a href={`/contador/`}>Contador</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div id="detail">
-        <Outlet />
-      </div>
-    </>
-  );
+  return <RouterProvider router={route} />;
 };
 
 export default Root;

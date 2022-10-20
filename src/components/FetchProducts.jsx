@@ -32,6 +32,7 @@ const FetchProducts = () => {
 
   return (
     <Grid container spacing={2}>
+      
       {isLoading ? (
         <div>Carregando</div>
       ) : (
